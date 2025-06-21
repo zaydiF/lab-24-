@@ -13,6 +13,9 @@
     </form>
     
     <%
+String nParam = request.getParameter("n");
+String xParam = request.getParameter("x");
+    if (nParam != null && xParam != null) {
         try{
 double x = Double.parseDouble(xParam);
 int n = Double.parseInt(nParam);
