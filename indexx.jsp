@@ -13,23 +13,22 @@
     </form>
     
     <%
-        try {
-            double x = Double.parseDouble(request.getParameter("x"));
-            double n = Double.parseDouble(request.getParameter("n"));
-            double sum = 0;
-            
-            for (double i = 0; i <= n; i++) {
-                double fact = 1;
-                for(double j = 1; j <= 2*i; j++) {
-                    fact *= j;
+        try{
+double x = Double.parseDouble(xParam);
+int n = Double.parseInt(nParam);
+            if(x > 1){
+double arcctg = 0;
+                for(int i = 0;i < n; i++){
+arcctg += Math.pow(-1,i+1) / ((2*i+1) * Math.pow(x,(2*i+1)));
+        }
+        out.println("resultat: "+ (arcctg + Math.PI/2));
+        }
+        else out.println("the value of x is incorrect");
+        }
+                catch(NumberFormatException e){
+        out.println("incorrect value");
+        }
                 }
-                sum += (Math.pow(-1, i) * Math.pow(x, 2*i)) / fact;
-            }
-            
-            out.println(String.format("sum = %.6f", sum));
-        } catch (NumberFormatException e) {
-            out.println("Ошибка: введите корреткное значение");
-        } 
     %>
 </body>
 </html>
